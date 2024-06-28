@@ -10,13 +10,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors()); 
 
-app.use(express.static(path.join(__dirname, '..', 'frontend', 'my-mern-project', 'dist')));
+app.use(express.static(path.join(__dirname, '../frontend/my-mern-project/build')));
 
 app.use('/user', userRoutes);
 app.use('/api', postRoutes);
 
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'my-mern-project', 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '../frontend/my-mern-project/build/index.html'));
 });
 
 const PORT = process.env.PORT || 5000;
