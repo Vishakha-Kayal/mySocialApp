@@ -12,7 +12,7 @@ const Register = () => {
     const handleOnSubmit = async (e) =>{
       try{
         e.preventDefault();
-        const response = await axios.post("http://localhost:5000/user/register", { username, email, password });
+        const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/user/register`, { username, email, password });
         setMessage("Account created successfully 😊");
         localStorage.setItem("token", response.data.token);
         window.location.href = "/";

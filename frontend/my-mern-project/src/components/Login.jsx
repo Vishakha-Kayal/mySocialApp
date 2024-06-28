@@ -10,7 +10,7 @@ const Login = () => {
   const handleOnSubmit = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post("http://localhost:5000/user/login", {username,password});
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/user/login`, { username, password });
       setMessage(response.data.message);
       localStorage.setItem("token", response.data.token);
       window.location.href = "/";

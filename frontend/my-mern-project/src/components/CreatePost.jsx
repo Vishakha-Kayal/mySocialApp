@@ -15,7 +15,7 @@ const CreatePost = () => {
       }
 
       const response = await axios.post(
-        "http://localhost:5000/api/addPost",
+        `${import.meta.env.VITE_API_BASE_URL}/api/addPost`,
         { title, content },
         { headers: { Authorization: `Bearer ${token}` } }
       );

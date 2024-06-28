@@ -24,7 +24,7 @@ const EditPost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/editPost/${postId}`, { title, content }, {
+      await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/editPost/${postId}`, { title, content }, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       navigate('/profile');

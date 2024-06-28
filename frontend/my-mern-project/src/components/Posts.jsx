@@ -9,7 +9,7 @@ const Posts = () => {
   useEffect(() => {
     const FetchPosts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/allPosts");
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/allPosts`);
         console.log(response.data);
         setPosts(response.data.posts); 
       } catch (error) {

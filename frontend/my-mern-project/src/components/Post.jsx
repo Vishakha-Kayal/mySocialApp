@@ -15,7 +15,7 @@ const Post = ({ data }) => {
       return;
     } else {
       const response = await axios.post(
-        "http://localhost:5000/api/like",
+        `${import.meta.env.VITE_API_BASE_URL}/api/like`,
         { postId: data._id },
         { headers: { Authorization: `Bearer ${token}` } }
       );

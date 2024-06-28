@@ -36,7 +36,7 @@ const Profile = () => {
 
   const handleDelete = async (postId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/deletePost/${postId}`, {
+      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/deletePost/${postId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       setPosts(posts.filter(post => post._id !== postId));
@@ -50,16 +50,16 @@ const Profile = () => {
       <h1 className="text-2xl text-center">
         Welcome to your Dashboard, {user?.username}
       </h1>
-      <div className="w-full px-2 py-1">
         <h3 className="text-xl font-medium mb-4">Your Posts</h3>
+      <div className="w-full px-2 py-1 flex gap-4">
         {
           posts.map((post,i)=>(
         <div className="flex justify-center flex-col w-[20%] bg-[#e4c3bd] rounded-xl px-3 py-3" key={i}>
           <h2 className="mb-2 text-2xl font-bold ">{post.title}</h2>
           <p className="mb-4 text-sm leading-6 capitalize text-justify">{post.content}</p>
           <div className="flex justify-between items-center">
-            <button onClick={() => handleEdit(post._id)}>Edit</button>
-            <button onClick={() => handleDelete(post._id)}>Delete</button>
+            <button onClick={() => handleEdit(post._id)} className="font-semibold text-lg hover:text-[#BA7264]">Edit</button>
+            <button onClick={() => handleDelete(post._id)} className="font-semibold text-lg hover:text-[#BA7264]">Delete</button>
           </div>
         </div>
 
