@@ -75,7 +75,7 @@ const Login = () => {
           </div>
         </div>
         <div>
-          <h4 className="mt-3 text-3xl font-semibold capitalize">{JSON.stringify(message)}</h4>
+          {/* <h4 className="mt-3 text-3xl font-semibold capitalize">{JSON.stringify(message)}</h4> */}
         </div>
       </div>
     </>
