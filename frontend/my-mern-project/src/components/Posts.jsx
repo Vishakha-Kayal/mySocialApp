@@ -11,7 +11,12 @@ const Posts = () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/allPosts`);
         console.log(response.data);
-        setPosts(response.data.posts); 
+         // Ensure response.data.posts is an array
+        if (Array.isArray(response.data.posts)) {
+          setPosts(response.data.posts);
+        } else {
+          console.error("Unexpected response format:", response.data);
+        }
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
@@ -28,9 +33,13 @@ const Posts = () => {
         <h2 className="text-xl font-semibold tracking-widest">All Posts</h2>
       </div>
       <div className="w-full flex flex-wrap gap-2 py-3">
-        {posts.map((post, i) => (
-          <Post data={post} key={i} />
-        ))}
+      {posts.length > 0 ? (
+          posts.map((post, i) => (
+            <Post data={post} key={i} />
+          ))
+        ) : (
+          <p>No posts available</p>
+        )}
       </div>
     </div>
   );
